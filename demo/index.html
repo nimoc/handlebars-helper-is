@@ -1,0 +1,6 @@
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+<script src="../src/helpers.js"></script>
+
+<script>
+	document.writeln(Handlebars.compile('{{#is foo bar}}work.{{else}}error.{{/is}}')({foo: false, bar: false}));
+</script>

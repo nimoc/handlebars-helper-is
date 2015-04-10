@@ -1,0 +1,31 @@
+{
+  "name": "handlebars-helper-is",
+  "version": "0.0.1",
+  "description": "一个 handlebars helper `is` 判断实现",
+  "main": "src/helpers.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nimojs/handlebars-helper-is.git"
+  },
+  "keywords": [
+    "handlebars",
+    "helpers",
+    "equal"
+  ],
+  "author": "Dan Harper",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "3.0.1"
+  },
+  "devDependencies": {
+    "mocha": "1.8.2",
+    "chai": "1.5.0",
+    "sinon": "1.6.0"
+  }
+}
