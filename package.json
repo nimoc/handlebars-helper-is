@@ -1,13 +1,10 @@
 {
   "name": "handlebars-helper-is",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "一个 handlebars helper `is` 判断实现",
-  "main": "src/helpers.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "helper-is.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,14 +15,18 @@
     "helpers",
     "equal"
   ],
-  "author": "Dan Harper",
+  "author": {
+    "name": "nimo",
+    "email": "nimo.jser@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
-    "handlebars": "3.0.1"
+    "handlebars": "^3.0.0"
   },
-  "devDependencies": {
-    "mocha": "1.8.2",
-    "chai": "1.5.0",
-    "sinon": "1.6.0"
+  "devDependencies": {},
+  "spm": {
+    "name": "handlebars-helper-is",
+    "version": "0.0.4",
+    "main": "helper-is.js"
   }
 }
