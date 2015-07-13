@@ -1,1 +1,117 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):"object"==typeof exports?exports.helperIs=e():t.helperIs=e()}(this,function(){return function(t){function e(r){if(n[r])return n[r].exports;var o=n[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,e),o.loaded=!0,o.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){var r=function(t){return"[object Array]"===Object.prototype.toString.call(t)},o=function(){this.expressions=[]};o.prototype.add=function(t,e){this.expressions[t]=e},o.prototype.call=function(t,e,n){if(!this.expressions.hasOwnProperty(t))throw new Error('Unknown operator "'+t+'"');return this.expressions[t](e,n)};var i=new o;i.add("not",function(t,e){return t!=e}),i.add("===",function(t,e){return t===e}),i.add("!==",function(t,e){return t!==e}),i.add("in",function(t,e){return r(e)||(e=e.split(",")),-1!==e.indexOf(t)});var s=function(){var t=arguments,e=t[0],n=t[1],r=t[2],o=t[3];return 2==t.length?(o=t[1],e?o.fn(this):o.inverse(this)):3==t.length?(r=t[1],o=t[2],e==r?o.fn(this):o.inverse(this)):i.call(n,e,r)?o.fn(this):o.inverse(this)};t.exports=s}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define(factory);
+	else if(typeof exports === 'object')
+		exports["helperIs"] = factory();
+	else
+		root["helperIs"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArray = function(value) {
+	    return Object.prototype.toString.call(value) === '[object Array]'
+	}
+
+	var ExpressionRegistry = function() {
+	    this.expressions = []
+	}
+
+	ExpressionRegistry.prototype.add = function (operator, method) {
+	    this.expressions[operator] = method
+	}
+
+	ExpressionRegistry.prototype.call = function (operator, left, right) {
+	    if ( ! this.expressions.hasOwnProperty(operator)) {
+	        throw new Error('Unknown operator "'+operator+'"')
+	    }
+
+	    return this.expressions[operator](left, right)
+	}
+
+	var eR = new ExpressionRegistry
+
+	eR.add('in', function(left, right) {
+	    if ( ! isArray(right)) {
+	        right = right.split(',')
+	    }
+	    return right.indexOf(left) !== -1
+	})
+
+	var helperIs = function() {
+	    var args = arguments
+	    ,   left = args[0]
+	    ,   operator = args[1]
+	    ,   right = args[2]
+	    ,   options = args[3]
+	    
+
+	    if (args.length == 2) {
+	        options = args[1]
+	        if (left) return options.fn(this)
+	        return options.inverse(this)
+	    }
+
+	    if (args.length == 3) {
+	        right = args[1]
+	        options = args[2]
+	        if (left == right) return options.fn(this)
+	        return options.inverse(this)
+	    }
+
+	    if (eR.call(operator, left, right)) {
+	        return options.fn(this)
+	    }
+	    return options.inverse(this)
+	}
+	module.exports = helperIs
+
+/***/ }
+/******/ ])
+});
+;

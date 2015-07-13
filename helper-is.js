@@ -19,15 +19,7 @@ ExpressionRegistry.prototype.call = function (operator, left, right) {
 }
 
 var eR = new ExpressionRegistry
-eR.add('not', function(left, right) {
-    return left != right
-})
-eR.add('===', function(left, right) {
-    return left === right
-})
-eR.add('!==', function(left, right) {
-    return left !== right
-})
+
 eR.add('in', function(left, right) {
     if ( ! isArray(right)) {
         right = right.split(',')
