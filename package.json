@@ -1,6 +1,6 @@
 {
   "name": "handlebars-helper-is",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "一个 handlebars helper `is` 判断实现",
   "main": "helper-is.js",
   "scripts": {
@@ -26,7 +26,10 @@
   "devDependencies": {},
   "spm": {
     "name": "handlebars-helper-is",
-    "version": "0.0.4",
-    "main": "helper-is.js"
+    "version": "0.0.5",
+    "main": "helper-is.js",
+    "build": {
+      "umd": "helperIs"
+    }
   }
 }
